@@ -26,3 +26,14 @@ function operate(num1, operator, num2){
             return divide(num1, num2);
     };
 };
+
+let numberButtons = document.querySelectorAll("#number");
+for (let i=0; i<numberButtons.length; i++){
+    numberButtons[i].addEventListener("click", () => {
+        document.getElementById("display").textContent += numberButtons[i].textContent;
+    });
+};
+
+
+
+// let clearDisplay = document.querySelector("#clear");
