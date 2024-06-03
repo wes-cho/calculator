@@ -28,14 +28,16 @@ function operate(num1, operator, num2){
 };
 
 let numberButtons = document.querySelectorAll("#number");
+let displayValue = '';
 for (let i=0; i<numberButtons.length; i++){
     numberButtons[i].addEventListener("click", () => {
         document.getElementById("display").textContent += numberButtons[i].textContent;
+        displayValue = document.getElementById("display").textContent;
     });
 };
-
 
 let clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
     document.getElementById("display").textContent = '';
 });
+
