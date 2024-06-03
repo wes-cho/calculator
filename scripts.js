@@ -35,5 +35,7 @@ for (let i=0; i<numberButtons.length; i++){
 };
 
 
-
-// let clearDisplay = document.querySelector("#clear");
+let clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", () => {
+    document.getElementById("display").textContent = '';
+});
