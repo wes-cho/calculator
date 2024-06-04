@@ -41,3 +41,4 @@ clearButton.addEventListener("click", () => {
     document.getElementById("display").textContent = '';
 });
 
+// let operatorButtons = document.querySelectorAll("#operator")
