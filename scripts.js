@@ -41,4 +41,23 @@ clearButton.addEventListener("click", () => {
     document.getElementById("display").textContent = '';
 });
 
-// let operatorButtons = document.querySelectorAll("#operator")
+let operatorButtons = document.querySelectorAll("#operator");
+let operatorChoice = '';
+for (let i=0; i<operatorButtons.length; i++){
+    operatorButtons[i].addEventListener("click", () => {
+        operatorChoice = operatorTransformation(operatorButtons[i].textContent);
+    });
+};
+
+function operatorTransformation(operatorChoice){
+    switch (operatorChoice){
+        case 'Add':
+            return '+';
+        case 'Subtract':
+            return '-';
+        case 'Multiply':
+            return '*';
+        case 'Divide':
+            return '/';
+    };
+};
