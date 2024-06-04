@@ -1,17 +1,17 @@
 function add(a,b){
-    return a+b;
+    return Number(a) + Number(b);
 };
 
 function subtract(a,b){
-    return a-b;
+    return Number(a) - Number(b);
 };
 
 function multiply(a,b){
-    return a*b;
+    return Number(a) * Number(b);
 };
 
 function divide(a,b){
-    return a/b;
+    return Number(a) / Number(b);
 };
 
 function operate(num1, operator, num2){
@@ -43,9 +43,13 @@ clearButton.addEventListener("click", () => {
 
 let operatorButtons = document.querySelectorAll("#operator");
 let operatorChoice = '';
+let number1 = '';
 for (let i=0; i<operatorButtons.length; i++){
     operatorButtons[i].addEventListener("click", () => {
-        operatorChoice = operatorTransformation(operatorButtons[i].textContent);
+        operatorChoice = operatorTransformation(operatorButtons[i].textContent); //can get rid of function wrapper when you change from words to symbol buttons
+        number1 = displayValue;
+        document.getElementById("display").textContent = '';
+        displayValue = '';
     });
 };
 
@@ -61,3 +65,10 @@ function operatorTransformation(operatorChoice){
             return '/';
     };
 };
+
+let number2 = '';
+let calculateButton = document.querySelector("#equals");
+calculateButton.addEventListener("click", () => {
+    number2 = displayValue;
+    document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
+});
