@@ -39,6 +39,10 @@ for (let i=0; i<numberButtons.length; i++){
 let clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
     document.getElementById("display").textContent = '';
+    operatorChoice = '';
+    number1 = '';
+    number2 = '';
+    displayValue = '';
 });
 
 let operatorButtons = document.querySelectorAll("#operator");
@@ -72,3 +76,4 @@ calculateButton.addEventListener("click", () => {
     number2 = displayValue;
     document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
 });
+
