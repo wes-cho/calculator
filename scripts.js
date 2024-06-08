@@ -27,53 +27,59 @@ function operate(num1, operator, num2){
     };
 };
 
-let numberButtons = document.querySelectorAll("#number");
-let displayValue = '';
-for (let i=0; i<numberButtons.length; i++){
-    numberButtons[i].addEventListener("click", () => {
-        document.getElementById("display").textContent += numberButtons[i].textContent;
-        displayValue = document.getElementById("display").textContent;
-    });
-};
-
 let clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
-    document.getElementById("display").textContent = '';
+    clearDisplay();
     operatorChoice = '';
     number1 = '';
     number2 = '';
-    displayValue = '';
+    currentValue = '';
 });
+
+function clearDisplay(){
+    document.getElementById("display").textContent.textContent = '';
+};
+
+let numberButtons = document.querySelectorAll("#number");
+let currentValue = '';
+for (let i=0; i<numberButtons.length; i++){
+    numberButtons[i].addEventListener("click", () => { 
+        document.getElementById("display").textContent += numberButtons[i].textContent;
+        currentValue = document.getElementById("display").textContent;
+    });
+};
 
 let operatorButtons = document.querySelectorAll("#operator");
 let operatorChoice = '';
 let number1 = '';
 for (let i=0; i<operatorButtons.length; i++){
     operatorButtons[i].addEventListener("click", () => {
-        operatorChoice = operatorTransformation(operatorButtons[i].textContent); //can get rid of function wrapper when you change from words to symbol buttons
-        number1 = displayValue;
-        document.getElementById("display").textContent = '';
-        displayValue = '';
+            number1 = currentValue;
+            operatorChoice = operatorButtons[i].textContent;
+            clearDisplay(); //get rid of this once you know how to set variable without using displayValue
+            currentValue = '';
     });
 };
 
-function operatorTransformation(operatorChoice){
-    switch (operatorChoice){
-        case 'Add':
-            return '+';
-        case 'Subtract':
-            return '-';
-        case 'Multiply':
-            return '*';
-        case 'Divide':
-            return '/';
-    };
-};
-
-let number2 = '';
+// let number2 = '';
 let calculateButton = document.querySelector("#equals");
 calculateButton.addEventListener("click", () => {
-    number2 = displayValue;
+    number2 = currentValue;
     document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
+    clearOperativeVariables();
 });
 
+function clearOperativeVariables(){
+    number1 ='';
+    number2 = '';
+    operatorChoice = '';
+    currentValue = '';
+}
+
+function calculate(operator){
+    number2 = currentValue;
+    document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
+    operatorChoice = operatorTransformation(operator);
+    number1 = document.getElementById("display").textContent;
+    number2 = '';
+}
