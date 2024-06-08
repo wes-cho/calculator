@@ -27,7 +27,7 @@ function operate(num1, operator, num2){
     };
 };
 
-let clearButton = document.querySelector("#clear");
+let clearButton = document.querySelector(".button.clear");
 clearButton.addEventListener("click", () => {
     clearDisplay();
     operatorChoice = '';
@@ -37,15 +37,15 @@ clearButton.addEventListener("click", () => {
 });
 
 function clearDisplay(){
-    document.getElementById("display").textContent.textContent = '';
+    document.querySelector(".display").textContent = '';
 };
 
 let numberButtons = document.querySelectorAll("#number");
 let currentValue = '';
 for (let i=0; i<numberButtons.length; i++){
     numberButtons[i].addEventListener("click", () => { 
-        document.getElementById("display").textContent += numberButtons[i].textContent;
-        currentValue = document.getElementById("display").textContent;
+        document.querySelector(".display").textContent += numberButtons[i].textContent;
+        currentValue = document.querySelector(".display").textContent;
     });
 };
 
@@ -65,7 +65,7 @@ for (let i=0; i<operatorButtons.length; i++){
 let calculateButton = document.querySelector("#equals");
 calculateButton.addEventListener("click", () => {
     number2 = currentValue;
-    document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
+    document.querySelector(".display").textContent = operate(number1, operatorChoice, number2);
     clearOperativeVariables();
 });
 
@@ -78,8 +78,8 @@ function clearOperativeVariables(){
 
 function calculate(operator){
     number2 = currentValue;
-    document.getElementById("display").textContent = operate(number1, operatorChoice, number2);
+    document.querySelector(".display").textContent = operate(number1, operatorChoice, number2);
     operatorChoice = operatorTransformation(operator);
-    number1 = document.getElementById("display").textContent;
+    number1 = document.querySelector(".display").textContent;
     number2 = '';
 }
