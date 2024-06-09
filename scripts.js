@@ -27,59 +27,51 @@ function operate(num1, operator, num2){
     };
 };
 
-let clearButton = document.querySelector(".button.clear");
-clearButton.addEventListener("click", () => {
-    clearDisplay();
-    operatorChoice = '';
-    number1 = '';
-    number2 = '';
-    currentValue = '';
-});
-
-function clearDisplay(){
-    document.querySelector(".display").textContent = '';
-};
-
-let numberButtons = document.querySelectorAll("#number");
-let currentValue = '';
-for (let i=0; i<numberButtons.length; i++){
-    numberButtons[i].addEventListener("click", () => { 
-        document.querySelector(".display").textContent += numberButtons[i].textContent;
-        currentValue = document.querySelector(".display").textContent;
-    });
-};
-
-let operatorButtons = document.querySelectorAll("#operator");
-let operatorChoice = '';
 let number1 = '';
-for (let i=0; i<operatorButtons.length; i++){
-    operatorButtons[i].addEventListener("click", () => {
-            number1 = currentValue;
-            operatorChoice = operatorButtons[i].textContent;
-            clearDisplay(); //get rid of this once you know how to set variable without using displayValue
-            currentValue = '';
+let number2 = '';
+let operator = '';
+let display = '';
+let result = '';
+let previousClicks = [];
+
+const clearButton = document.querySelector(".clear");
+clearButton.addEventListener('click', (e) => {
+    document.querySelector('.display').textContent = '';
+    previousClicks = [];
+});
+
+const numberButtons = document.querySelectorAll('#number');
+for (let i=0; i<numberButtons.length; i++){
+    numberButtons[i].addEventListener('click', (e) => {
+        previousClicks.push(numberButtons[i].id);
+        document.querySelector('.display').textContent += numberButtons[i].textContent;
+        if (previousClicks[previousClicks.length-2] == 'operator'){
+            document.querySelector('.display').textContent = numberButtons[i].textContent;
+        };
     });
 };
 
-// let number2 = '';
-let calculateButton = document.querySelector("#equals");
-calculateButton.addEventListener("click", () => {
-    number2 = currentValue;
-    document.querySelector(".display").textContent = operate(number1, operatorChoice, number2);
-    clearOperativeVariables();
+const operatorButtons = document.querySelectorAll('#operator');
+for (let i=0; i<operatorButtons.length; i++){
+    operatorButtons[i].addEventListener('click', (e) => {
+        previousClicks.push(operatorButtons[i].id);
+        operator = operatorButtons[i].textContent;
+        number1 = document.querySelector('.display').textContent;
+    });
+};
+
+const decimalButton = document.querySelector('#decimal');
+decimalButton.addEventListener('click', (e) => {
+    previousClicks.push(decimalButton.id);
+    if (document.querySelector('.display').textContent.includes('.')){
+        document.querySelector('.display').textContent += '';
+    } else {
+        document.querySelector('.display').textContent += '.';
+    }
 });
 
-function clearOperativeVariables(){
-    number1 ='';
-    number2 = '';
-    operatorChoice = '';
-    currentValue = '';
-}
-
-function calculate(operator){
-    number2 = currentValue;
-    document.querySelector(".display").textContent = operate(number1, operatorChoice, number2);
-    operatorChoice = operatorTransformation(operator);
-    number1 = document.querySelector(".display").textContent;
-    number2 = '';
-}
+const calculateButton = document.querySelector('#equals');
+calculateButton.addEventListener('click', () => {
+    number2 = document.querySelector('.display').textContent;
+    document.querySelector('.display') = operate(number1, operator, number2);
+});
