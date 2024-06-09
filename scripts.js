@@ -23,7 +23,19 @@ function operate(num1, operator, num2){
             case 'x':
                 return multiply(num1, num2);
             case '/':
-                return divide(num1, num2);
+                //prevents user from dividing by zero
+                if (num2 === '0'){
+                    alert("Ha, you thought! Try again.")
+                    number1 = '';
+                    number2 = '';
+                    operator = '';
+                    previousClicks = [];
+                    //sets display to zero, allowing for further calculations 
+                    return divide(0,1);         
+                } else {
+                    return divide(num1, num2);
+                }
+                
         };
     };
 
