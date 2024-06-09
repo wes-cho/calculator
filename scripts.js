@@ -87,8 +87,13 @@ decimalButton.addEventListener('click', () => {
 
 const calculateButton = document.querySelector('#equals');
 calculateButton.addEventListener('click', () => {
+    previousClicks.push(calculateButton.id);
     number2 = document.querySelector('.display').textContent;
     document.querySelector('.display').textContent = operate(number1, operator, number2);
-    //clears variable so that user can't continuously click "calculate" 
+    //clears variable so that user can't continuously click "calculate", then makes it so that
+    // display is set to zero if user clicks calculate consecutively 
     number1 = '';
+    if (previousClicks[previousClicks.length-2] === 'equals'){
+        document.querySelector('.display').textContent = '0';
+    }
 });
