@@ -2,6 +2,11 @@ html{
     background-color: #edf6f9;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+#calculator-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 #calculator{
     background-color: #a8dadc;
     display: flex;
@@ -13,6 +18,7 @@ html{
     border: 3px solid;
     border-radius: 5px;
     font-size: 25px;
+    margin-top: 200px;
 }
 
 .top-row{
@@ -26,7 +32,7 @@ html{
     text-align: right;
     border-radius: 6px;
     padding: 20px 10px;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 10px -10px 10px;
 }
 .button.clear{
     background-color: #e63946;
@@ -35,7 +41,7 @@ html{
     text-shadow: 1px 1px 1px black;
     padding: 20px 10px;
     flex-grow: 1;
-    margin-bottom: 0px;
+    margin-bottom: -10px;
 }
 .button.clear:active{
     background-color: #780000;
