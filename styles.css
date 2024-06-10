@@ -42,6 +42,7 @@ html{
     padding: 20px 10px;
     flex-grow: 1;
     margin-bottom: -10px;
+    user-select: none;
 }
 .button.clear:active{
     background-color: #780000;
@@ -64,6 +65,7 @@ html{
     border-radius: 6px;
     width: 75px;
     margin: 10px;
+    user-select: none;
 }
 .button:active{
     background-color: #457b9d;
@@ -94,6 +96,7 @@ html{
     border: 0.5px solid;
     border-radius: 6px;
     margin: 10px;
+    user-select: none;
 }
 .calculate:active{
     background-color: #14213d;
