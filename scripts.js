@@ -28,10 +28,9 @@ function operate(num1, operator, num2){
                     alert("Ha, you thought! Try again.")
                     number1 = '';
                     number2 = '';
-                    operator = '';
+                    // operator = '';
                     previousClicks = [];
-                    //sets display to zero, allowing for further calculations 
-                    return divide(0,1);         
+                    break;         
                 } else {
                     return divide(num1, num2);
                 }
@@ -100,12 +99,17 @@ decimalButton.addEventListener('click', () => {
 const calculateButton = document.querySelector('#equals');
 calculateButton.addEventListener('click', () => {
     previousClicks.push(calculateButton.id);
-    number2 = document.querySelector('.display').textContent;
-    document.querySelector('.display').textContent = operate(number1, operator, number2);
+    //prevents user from being able to operate with only number1 and operator defined,
+    // since number2 is always defined
+    if (previousClicks[previousClicks.length-2] != 'operator'){
+        number2 = document.querySelector('.display').textContent;
+        document.querySelector('.display').textContent = operate(number1, operator, number2);
+    };
     //clears variable so that user can't continuously click "calculate", then makes it so that
     // display is set to zero if user clicks calculate consecutively 
     number1 = '';
     if (previousClicks[previousClicks.length-2] === 'equals'){
-        document.querySelector('.display').textContent = '0';
-    }
+        document.querySelector('.display').textContent = '';
+        operator = '';
+    };
 });
