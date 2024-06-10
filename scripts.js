@@ -1,17 +1,17 @@
 function add(a,b){
-    return Number(a) + Number(b);
+    return (Number(a) + Number(b)).toFixed(4);
 };
 
 function subtract(a,b){
-    return Number(a) - Number(b);
+    return (Number(a) - Number(b)).toFixed(4);
 };
 
 function multiply(a,b){
-    return Number(a) * Number(b);
+    return (Number(a) * Number(b)).toFixed(4);
 };
 
 function divide(a,b){
-    return Number(a) / Number(b);
+    return (Number(a) / Number(b)).toFixed(4);
 };
 
 function operate(num1, operator, num2){
