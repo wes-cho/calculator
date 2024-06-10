@@ -1,17 +1,17 @@
 function add(a,b){
-    return (Number(a) + Number(b)).toFixed(4);
+    return Math.round((Number(a) + Number(b))*1000)/1000;
 };
 
 function subtract(a,b){
-    return (Number(a) - Number(b)).toFixed(4);
+    return Math.round((Number(a) - Number(b))*1000)/1000;
 };
 
 function multiply(a,b){
-    return (Number(a) * Number(b)).toFixed(4);
+    return Math.round((Number(a) * Number(b))*1000)/1000;
 };
 
 function divide(a,b){
-    return (Number(a) / Number(b)).toFixed(4);
+    return Math.round((Number(a) / Number(b))*1000)/1000;
 };
 
 function operate(num1, operator, num2){
