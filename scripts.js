@@ -110,6 +110,6 @@ calculateButton.addEventListener('click', () => {
     number1 = '';
     if (previousClicks[previousClicks.length-2] === 'equals'){
         document.querySelector('.display').textContent = '';
-        operator = '';
     };
+    operator = '';
 });
